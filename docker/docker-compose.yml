@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  baim_identity_db:
+    image: postgres:16
+    container_name: baim_identity_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${IDENTITY_DB_NAME}
+      POSTGRES_USER: ${IDENTITY_DB_USER}
+      POSTGRES_PASSWORD: ${IDENTITY_DB_PASSWORD}
+    ports:
+      - "${IDENTITY_DB_PORT}:5432"
+    volumes:
+      - identity_pgdata:/var/lib/postgresql/data
+
+  identity-api:
+    build:
+      context: ../src/Baim.Identity/Baim.Identity.API
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      ConnectionStrings__DefaultConnection: "Host=${IDENTITY_DB_HOST};Port=${IDENTITY_DB_PORT};Database=${IDENTITY_DB_NAME};Username=${IDENTITY_DB_USER};Password=${IDENTITY_DB_PASSWORD}"
+      Jwt__Issuer: ${JWT_ISSUER}
+      Jwt__Audience: ${JWT_AUDIENCE}
+      Jwt__Key: ${JWT_SECRET}
+    ports:
+      - "${IDENTITY_API_PORT}:80"
+    depends_on:
+      - baim_identity_db
+    env_file:
+      - .env
+
+volumes:
+  identity_pgdata:
