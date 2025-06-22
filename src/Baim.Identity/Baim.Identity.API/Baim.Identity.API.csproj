@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Shared.Configuration\Shared.Configuration.csproj" />
     <ProjectReference Include="..\Baim.Identity.Services\Baim.Identity.Services.csproj" />
   </ItemGroup>
 

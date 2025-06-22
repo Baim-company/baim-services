@@ -1,5 +1,11 @@
+using Shared.Configuration.Extensions;
+using Shared.Common.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSharedConfiguration();
+
+builder.Services.RegisterAllModules(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
