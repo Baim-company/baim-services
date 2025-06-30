@@ -9,6 +9,8 @@
   <ItemGroup>
     <Folder Include="Handlers\" />
     <Folder Include="Mappers\" />
+    <Folder Include="Repositories\Abstractions\" />
+    <Folder Include="Repositories\Implementations\" />
     <Folder Include="Resources\" />
     <Folder Include="Validation\" />
   </ItemGroup>

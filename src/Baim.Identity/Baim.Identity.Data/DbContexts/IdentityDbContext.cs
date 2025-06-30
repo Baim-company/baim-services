@@ -5,8 +5,7 @@ namespace Baim.Identity.Data.DbContexts;
 
 public class IdentityDbContext : DbContext
 {
-    public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
-        : base(options) { }
+    public IdentityDbContext(DbContextOptions<IdentityDbContext> options): base(options) { }
 
     public DbSet<ApplicationUser> Users { get; set; }
     public DbSet<ApplicationRole> Roles { get; set; }

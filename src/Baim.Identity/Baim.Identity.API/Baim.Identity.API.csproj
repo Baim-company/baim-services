@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Shared.Configuration\Shared.Configuration.csproj" />
+    <ProjectReference Include="..\Baim.Identity.Data\Baim.Identity.Data.csproj" />
     <ProjectReference Include="..\Baim.Identity.Services\Baim.Identity.Services.csproj" />
   </ItemGroup>
 
